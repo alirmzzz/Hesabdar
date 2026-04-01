@@ -1,581 +1,152 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0f766e">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<title>هم‌بودجه</title>
-<link rel="apple-touch-icon" href="icon-192.png">
-<style>
-:root {
-  --bg:#f4f7fb; --card:#ffffff; --line:#dbe4ef; --text:#0f172a; --muted:#64748b;
-  --accent:#0f766e; --accent2:#0b5f59; --danger:#b91c1c; --ok:#15803d; --warn:#b45309;
-  --shadow:0 10px 24px rgba(15,23,42,.08); --radius:18px;
-}
-body.dark {
-  --bg:#0b1220; --card:#121b2d; --line:#24324d; --text:#e5eefc; --muted:#9db0ce;
-  --accent:#14b8a6; --accent2:#0f9488; --shadow:0 12px 30px rgba(0,0,0,.30);
-}
-* {box-sizing:border-box; -webkit-tap-highlight-color: transparent}
-html, body {height:100%}
-body {margin:0; font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Tahoma,sans-serif; background:var(--bg); color:var(--text); padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom); transition:background .2s, color .2s}
-.app {max-width:840px; margin:0 auto; padding:14px 14px 100px}
-.header {display:flex; justify-content:space-between; gap:12px; align-items:flex-start; margin-bottom:12px}
-.title {font-size:30px; font-weight:900; line-height:1.1}
-.sub {font-size:13px; color:var(--muted); margin-top:6px}
-.badge {display:inline-block; font-size:11px; padding:4px 8px; border:1px solid var(--line); border-radius:999px; color:var(--muted); margin-top:8px}
-.actions {display:flex; gap:8px; flex-wrap:wrap}
-.card {background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:14px; margin-bottom:12px}
-.metric-grid {display:grid; gap:10px; grid-template-columns:repeat(3,1fr)}
-.metric {border:1px solid var(--line); border-radius:16px; padding:12px}
-.metric .label {font-size:12px; color:var(--muted); margin-bottom:6px}
-.metric .value {font-size:22px; font-weight:800}
-.grid2 {display:grid; gap:10px; grid-template-columns:1fr 1fr}
-.list {display:grid; gap:10px}
-.item {border:1px solid var(--line); border-radius:16px; padding:12px}
-.row {display:flex; justify-content:space-between; align-items:center; gap:10px}
-.wrap {flex-wrap:wrap}
-label {display:block; font-size:12px; color:var(--muted); margin:0 0 6px}
-input, select, textarea, button {font:inherit}
-input, select, textarea {
-  width:100%; padding:12px 13px; border:1px solid var(--line); border-radius:14px;
-  background:var(--card); color:var(--text);
-}
-button {border:none; border-radius:14px; padding:12px 14px; font-weight:800; cursor:pointer}
-.btn {background:var(--accent); color:#fff}
-.btn:hover {background:var(--accent2)}
-.btn.secondary {background:transparent; color:var(--text); border:1px solid var(--line)}
-.btn.ghost {background:transparent; color:var(--muted); border:1px dashed var(--line)}
-.fab {
-  position:fixed; left:16px; bottom:84px; width:58px; height:58px; border-radius:50%;
-  display:grid; place-items:center; background:var(--accent); color:#fff; font-size:34px; box-shadow:var(--shadow);
-}
-.tabs {
-  position:fixed; left:0; right:0; bottom:0; display:grid; grid-template-columns:repeat(5,1fr); gap:8px;
-  padding:10px 10px calc(10px + env(safe-area-inset-bottom));
-  background:rgba(255,255,255,.88); backdrop-filter:blur(14px); border-top:1px solid var(--line);
-}
-body.dark .tabs {background:rgba(11,18,32,.88)}
-.tab {background:var(--card); border:1px solid var(--line); padding:10px 8px; border-radius:14px; text-align:center; font-size:12px; color:var(--muted)}
-.tab.active {background:var(--accent); color:#fff; border-color:transparent}
-.screen {display:none}
-.screen.active {display:block}
-.section-title {font-size:18px; font-weight:900; margin:0 0 12px}
-.muted {color:var(--muted)}
-.empty {padding:18px; text-align:center; color:var(--muted); border:1px dashed var(--line); border-radius:16px}
-.progress {height:10px; background:#e8edf5; border-radius:999px; overflow:hidden}
-.progress > span {display:block; height:100%; background:var(--accent); border-radius:999px}
-.notice {padding:10px 12px; border:1px solid var(--line); border-radius:14px}
-.ok {color:var(--ok)} .danger {color:var(--danger)} .warn {color:var(--warn)}
-.small {font-size:12px}
-table {width:100%; border-collapse:collapse}
-th, td {padding:10px 8px; border-bottom:1px solid var(--line); text-align:right; font-size:13px}
-th {color:var(--muted)}
-.debug {font-size:12px; color:var(--muted); white-space:pre-wrap; max-height:140px; overflow:auto}
-@media (max-width:640px) {
-  .metric-grid, .grid2 {grid-template-columns:1fr}
-  .header {flex-direction:column}
-}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#081224" />
+  <title>هم‌بودجه</title>
+  <style>
+    :root{
+      --bg:#f3f6fb;--bg-2:#e9eef8;--card:#ffffff;--card-2:#f8fbff;--muted:#64748b;--text:#0f172a;--line:#dbe5f1;
+      --accent:#14b8a6;--accent-2:#0f766e;--danger:#dc2626;--warn:#d97706;--ok:#16a34a;
+      --shadow:0 10px 30px rgba(15,23,42,.08);--shadow-soft:0 8px 20px rgba(15,23,42,.05);
+      --radius:22px;--fab-size:64px;--tabbar-height:94px;
+    }
+    body.theme-dark{
+      --bg:#07111f;--bg-2:#0d1a30;--card:#0d1830;--card-2:#101d39;--muted:#95a3c5;--text:#eef4ff;--line:#1d2d52;
+      --accent:#22c7b8;--accent-2:#16a394;--danger:#f87171;--warn:#f59e0b;--ok:#4ade80;
+      --shadow:0 12px 36px rgba(0,0,0,.33);--shadow-soft:0 8px 24px rgba(0,0,0,.22);
+    }
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html,body{height:100%}
+    body{
+      margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Tahoma,sans-serif;
+      background:linear-gradient(180deg,var(--bg),var(--bg-2) 42%,var(--bg));
+      color:var(--text);padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);transition:background .2s ease,color .2s ease;
+    }
+    .app{max-width:860px;margin:0 auto;padding:16px 14px calc(var(--tabbar-height) + env(safe-area-inset-bottom) + 18px)}
+    .screen{display:none}.screen.active{display:block}
+    .hero{padding:8px 2px 4px;margin-bottom:14px}
+    .hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}
+    .brand h1{margin:0;font-size:34px;line-height:1.05;font-weight:900;letter-spacing:-.03em}
+    .brand p{margin:8px 0 0;color:var(--muted);font-size:14px}
+    .hero-utilities{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+    .action-stack{display:flex;gap:8px;flex-wrap:wrap}
+    .chip-btn{
+      border:1px solid var(--line);background:color-mix(in srgb, var(--card) 82%, transparent);
+      color:var(--text);padding:10px 14px;border-radius:999px;font-weight:800;cursor:pointer;box-shadow:var(--shadow-soft);
+      display:inline-flex;align-items:center;gap:8px;min-height:42px
+    }
+    .chip-btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));border-color:transparent;color:#fff}
+    .chip-btn .icon{font-size:16px;line-height:1}
+    .version-badge{display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;border:1px solid var(--line);color:var(--muted);font-size:12px;background:color-mix(in srgb, var(--card) 88%, transparent)}
+    .card{background:linear-gradient(180deg,var(--card),var(--card-2));border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:16px;margin-bottom:14px}
+    .section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+    .section-title{font-size:17px;font-weight:900}.section-sub{font-size:12px;color:var(--muted)}
+    .grid{display:grid;gap:10px}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .metric{padding:14px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,color-mix(in srgb, var(--card) 76%, transparent),color-mix(in srgb, var(--bg) 28%, transparent))}
+    .metric .label{font-size:12px;color:var(--muted);margin-bottom:6px}.metric .value{font-size:22px;font-weight:900}
+    .row{display:flex;gap:10px;align-items:center;justify-content:space-between}.list{display:grid;gap:10px}
+    .item{border:1px solid var(--line);border-radius:18px;padding:12px 13px;background:color-mix(in srgb, var(--card) 82%, transparent);box-shadow:var(--shadow-soft)}
+    .muted{color:var(--muted)} .sm{font-size:12px}
+    label{display:block;font-size:12px;color:var(--muted);margin:0 0 6px}
+    input,select,textarea,button{font:inherit}
+    input,select,textarea{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:15px;background:var(--card);color:var(--text);outline:none}
+    input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+    button{border:none;cursor:pointer}
+    .btn{min-height:42px;padding:10px 14px;border-radius:14px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 10px 24px color-mix(in srgb,var(--accent) 34%, transparent)}
+    .btn.secondary{background:transparent;color:var(--text);border:1px solid var(--line)}
+    .btn.ghost{background:color-mix(in srgb, var(--card) 88%, transparent);color:var(--text);border:1px solid var(--line)}
+    .btn.danger{background:color-mix(in srgb,var(--danger) 12%, transparent);color:var(--danger);border:1px solid color-mix(in srgb,var(--danger) 28%, transparent)}
+    .btn.sm{min-height:34px;padding:7px 11px;border-radius:12px;font-size:12px}
+    .inline-actions{display:flex;gap:8px;flex-wrap:wrap}.badge{padding:6px 10px;border-radius:999px;font-size:11px;border:1px solid var(--line);background:color-mix(in srgb, var(--card) 84%, transparent)}
+    .badge.warn{color:var(--warn)} .badge.ok{color:var(--ok)} .badge.danger{color:var(--danger)}
+    .progress{height:10px;background:color-mix(in srgb, var(--bg) 70%, transparent);border-radius:999px;overflow:hidden;margin-top:8px}.progress>span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:999px}
+    .notice{padding:11px 12px;border-radius:15px;background:color-mix(in srgb, var(--card) 84%, transparent);border:1px solid var(--line);font-size:13px}
+    .empty{padding:18px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:16px}
+    .danger-t{color:var(--danger)} .ok-t{color:var(--ok)} .warn-t{color:var(--warn)}
+    table{width:100%;border-collapse:collapse} th,td{padding:11px 8px;border-bottom:1px solid var(--line);text-align:right;font-size:13px} th{color:var(--muted);font-weight:800}
+    .floating-add{position:fixed;left:max(16px,calc(env(safe-area-inset-left) + 12px));bottom:calc(var(--tabbar-height) + env(safe-area-inset-bottom) + 18px);width:var(--fab-size);height:var(--fab-size);border-radius:22px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;font-size:34px;font-weight:500;box-shadow:0 18px 34px color-mix(in srgb, var(--accent) 30%, transparent),0 8px 20px rgba(0,0,0,.16);z-index:30}
+    .tabs-wrap{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 30%, transparent),color-mix(in srgb,var(--bg) 86%, transparent) 30%,color-mix(in srgb,var(--bg) 96%, transparent));backdrop-filter:blur(18px)}
+    .tabs{max-width:860px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding:8px;background:color-mix(in srgb,var(--card) 70%, transparent);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow)}
+    .tab{min-height:52px;border-radius:18px;padding:9px 6px;background:transparent;color:var(--muted);display:grid;place-items:center;gap:3px;border:1px solid transparent}
+    .tab.active{color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 10px 22px color-mix(in srgb,var(--accent) 25%, transparent)}
+    .tab .tab-icon{font-size:18px;line-height:1}.tab .tab-label{font-size:11px;font-weight:800}
+    @media (max-width:740px){.g2,.g3{grid-template-columns:1fr}.brand h1{font-size:31px}.hero-top{align-items:flex-start;flex-direction:column}.hero-utilities{align-items:flex-start}}
+  </style>
 </head>
-<body>
+<body class="theme-dark">
 <div class="app">
-  <div class="header">
-    <div>
-      <div class="title">هم‌بودجه</div>
-      <div class="sub">مدیریت دخل‌وخرج، بودجه، اقساط و صندوق‌های هدف‌دار</div>
-      <div class="badge">نسخه v5.0.0</div>
+  <header class="hero">
+    <div class="hero-top">
+      <div class="brand">
+        <h1>هم‌بودجه</h1>
+        <p>مدیریت دخل‌وخرج، بودجه، اقساط و صندوق‌های هدف‌دار</p>
+      </div>
+      <div class="version-badge">نسخه v6.0.0</div>
     </div>
-    <div class="actions">
-      <button type="button" class="btn secondary" id="themeBtn">🌙 تم</button>
-      <button type="button" class="btn secondary" id="demoBtn">داده نمونه</button>
+    <div class="hero-utilities">
+      <div class="action-stack">
+        <button class="chip-btn primary" id="seedDemo"><span class="icon">✦</span><span>بارگذاری داده نمونه</span></button>
+      </div>
+      <button class="chip-btn" id="themeToggle"><span class="icon" id="themeIcon">☀️</span><span id="themeLabel">تم روشن</span></button>
     </div>
-  </div>
-
-  <section id="dashboard" class="screen active"></section>
-  <section id="transactions" class="screen"></section>
-  <section id="budgets" class="screen"></section>
-  <section id="funds" class="screen"></section>
-  <section id="reports" class="screen"></section>
+  </header>
+  <section id="screen-dashboard" class="screen active"></section>
+  <section id="screen-transactions" class="screen"></section>
+  <section id="screen-budgets" class="screen"></section>
+  <section id="screen-funds" class="screen"></section>
+  <section id="screen-reports" class="screen"></section>
 </div>
-
-<button type="button" class="fab" id="addBtn">+</button>
-<nav class="tabs" id="tabs"></nav>
-
+<button class="floating-add" id="quickAdd" aria-label="افزودن تراکنش">＋</button>
+<div class="tabs-wrap"><nav class="tabs" id="tabs"></nav></div>
 <script>
-(() => {
-  'use strict';
-  const APP_KEY = 'hambodje.single.v5';
-  const THEME_KEY = 'hambodje.theme.v5';
-  const VERSION = 'v5.0.0';
-  const categories = ['مسکن','خوراک','حمل‌ونقل','درمان','آموزش','خانواده','ارتباطات','تفریح','بدهی','پس‌انداز','درآمد'];
-  const tabs = [
-    ['dashboard','داشبورد'],
-    ['transactions','تراکنش‌ها'],
-    ['budgets','بودجه'],
-    ['funds','صندوق‌ها'],
-    ['reports','گزارش']
-  ];
-  const logBuffer = [];
-  function log(msg) {
-    const line = new Date().toLocaleTimeString('fa-IR') + ' | ' + msg;
-    logBuffer.unshift(line);
-    if (logBuffer.length > 20) logBuffer.pop();
-    const el = document.getElementById('debugBox');
-    if (el) el.textContent = logBuffer.join('\n');
-  }
-  function fmt(n) {
-    return new Intl.NumberFormat('fa-IR').format(Math.round(Number(n || 0)));
-  }
-  function toNum(v) {
-    if (v == null) return 0;
-    const fa = '۰۱۲۳۴۵۶۷۸۹';
-    return Number(String(v).replace(/[۰-۹]/g, d => fa.indexOf(d)).replace(/,/g, '').trim()) || 0;
-  }
-  function today() {
-    const parts = new Intl.DateTimeFormat('fa-IR-u-ca-persian', {year:'numeric', month:'2-digit', day:'2-digit'}).format(new Date()).match(/[۰-۹0-9]+/g) || [];
-    const nums = parts.map(p => String(toNum(p)).padStart(2,'0'));
-    return nums.join('/');
-  }
-  function currentMonth() {
-    return today().slice(0, 7);
-  }
-  function monthOf(date) {
-    return String(date || '').slice(0, 7);
-  }
-  function uid() {
-    return Math.random().toString(36).slice(2,8) + Date.now().toString(36).slice(-4);
-  }
-  function defaultState() {
-    return {
-      version: VERSION,
-      activeTab: 'dashboard',
-      accounts: [{id: uid(), name: 'بانک اصلی', openingBalance: 0}],
-      transactions: [],
-      budgets: {},
-      funds: [],
-      installments: []
-    };
-  }
-  function loadState() {
-    try {
-      const raw = localStorage.getItem(APP_KEY);
-      if (!raw) return defaultState();
-      const data = JSON.parse(raw);
-      return Object.assign(defaultState(), data || {});
-    } catch (e) {
-      return defaultState();
-    }
-  }
-  const state = loadState();
-  function saveState() {
-    localStorage.setItem(APP_KEY, JSON.stringify(state));
-    render();
-    log('ذخیره شد');
-  }
-  function budgetKey(month, cat) {
-    return month + '|' + cat;
-  }
-  function planned(cat, month=currentMonth()) {
-    return toNum(state.budgets[budgetKey(month, cat)] || 0);
-  }
-  function monthTransactions(month=currentMonth()) {
-    return state.transactions.filter(t => monthOf(t.date) === month);
-  }
-  function monthIncome(month=currentMonth()) {
-    return monthTransactions(month).filter(t => t.type === 'income').reduce((a,t) => a + toNum(t.amount), 0);
-  }
-  function monthExpense(month=currentMonth()) {
-    return monthTransactions(month).filter(t => t.type === 'expense').reduce((a,t) => a + toNum(t.amount), 0);
-  }
-  function categorySpent(cat, month=currentMonth()) {
-    return monthTransactions(month).filter(t => t.type === 'expense' && t.category === cat).reduce((a,t) => a + toNum(t.amount), 0);
-  }
-  function totalBalance() {
-    const opening = state.accounts.reduce((a,x) => a + toNum(x.openingBalance), 0);
-    const delta = state.transactions.reduce((a,t) => a + (t.type === 'income' ? toNum(t.amount) : -toNum(t.amount)), 0);
-    return opening + delta;
-  }
-  function forecast30() {
-    const inc = monthIncome();
-    const exp = monthExpense();
-    const inst = state.installments.reduce((a,x) => a + toNum(x.monthlyAmount), 0);
-    const fund = state.funds.reduce((a,x) => a + toNum(x.monthlyRequired), 0);
-    return totalBalance() + inc - exp - inst - fund;
-  }
-  function applyTheme(theme) {
-    const t = theme || localStorage.getItem(THEME_KEY) || 'light';
-    document.body.classList.toggle('dark', t === 'dark');
-    localStorage.setItem(THEME_KEY, t);
-    const b = document.getElementById('themeBtn');
-    if (b) b.textContent = t === 'dark' ? '☀️ تم' : '🌙 تم';
-    log('تم: ' + t);
-  }
-  function switchTab(name) {
-    state.activeTab = name;
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    const target = document.getElementById(name);
-    if (target) target.classList.add('active');
-    document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
-    renderTab(name);
-    log('تب: ' + name);
-  }
-  function seedDemoData() {
-    if (state.transactions.length || state.funds.length || state.installments.length) {
-      if (!confirm('داده فعلی پاک و نمونه جایگزین شود؟')) return;
-    }
-    state.accounts = [{id: uid(), name: 'بانک اصلی', openingBalance: 120000000}];
-    state.transactions = [
-      {id: uid(), type:'income', amount:85000000, category:'درآمد', date: currentMonth() + '/01', note:'حقوق'},
-      {id: uid(), type:'expense', amount:12000000, category:'خوراک', date: currentMonth() + '/03', note:'سوپرمارکت'},
-      {id: uid(), type:'expense', amount:5000000, category:'حمل‌ونقل', date: currentMonth() + '/05', note:'بنزین'},
-      {id: uid(), type:'expense', amount:26000000, category:'مسکن', date: currentMonth() + '/07', note:'اجاره'}
-    ];
-    state.budgets = {};
-    state.budgets[budgetKey(currentMonth(),'خوراک')] = 15000000;
-    state.budgets[budgetKey(currentMonth(),'حمل‌ونقل')] = 6000000;
-    state.budgets[budgetKey(currentMonth(),'مسکن')] = 26000000;
-    state.budgets[budgetKey(currentMonth(),'درمان')] = 3000000;
-    state.funds = [{id: uid(), title:'بیمه خودرو', targetAmount:30000000, savedAmount:12000000, dueDate:'1406/02/15', monthlyRequired:3000000}];
-    state.installments = [{id: uid(), title:'قسط خودرو', monthlyAmount:8500000, remainingBalance:187000000, dueDate: currentMonth() + '/18'}];
-    saveState();
-    switchTab('dashboard');
-    log('داده نمونه بارگذاری شد');
-    alert('داده نمونه با موفقیت بارگذاری شد.');
-  }
-  function makeTabs() {
-    const root = document.getElementById('tabs');
-    root.innerHTML = tabs.map(([k, label]) => `<button type="button" class="tab ${state.activeTab===k?'active':''}" data-tab="${k}">${label}</button>`).join('');
-    root.querySelectorAll('.tab').forEach(btn => btn.addEventListener('click', () => switchTab(btn.dataset.tab)));
-  }
-  function renderDashboard() {
-    const month = currentMonth();
-    const exp = monthExpense(month);
-    const inc = monthIncome(month);
-    const remain = inc - exp;
-    const alerts = [];
-    if (forecast30() < 0) alerts.push('پیش‌بینی ۳۰ روزه منفی است.');
-    const foodPlan = planned('خوراک', month);
-    if (foodPlan && categorySpent('خوراک', month) >= foodPlan * 0.85) alerts.push('بودجه خوراک نزدیک سقف است.');
-    if (state.installments.length) alerts.push('نزدیک‌ترین سررسید: ' + state.installments[0].title + ' - ' + state.installments[0].dueDate);
-    document.getElementById('dashboard').innerHTML = `
-      <div class="card">
-        <div class="metric-grid">
-          <div class="metric"><div class="label">مانده کل</div><div class="value">${fmt(totalBalance())}</div></div>
-          <div class="metric"><div class="label">درآمد این ماه</div><div class="value">${fmt(inc)}</div></div>
-          <div class="metric"><div class="label">هزینه این ماه</div><div class="value">${fmt(exp)}</div></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="metric-grid">
-          <div class="metric"><div class="label">باقی‌مانده این ماه</div><div class="value">${fmt(remain)}</div></div>
-          <div class="metric"><div class="label">پیش‌بینی ۳۰ روزه</div><div class="value ${forecast30()<0?'danger':'ok'}">${fmt(forecast30())}</div></div>
-          <div class="metric"><div class="label">نسخه</div><div class="value" style="font-size:16px">${VERSION}</div></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="section-title">هشدارها</div>
-        <div class="list">${alerts.length ? alerts.map(a => `<div class="notice">${a}</div>`).join('') : '<div class="empty">هشدار مهمی وجود ندارد.</div>'}</div>
-      </div>
-      <div class="card">
-        <div class="section-title">راهنمای تست</div>
-        <div class="small muted">۱) روی «داده نمونه» بزن. ۲) روی «+» بزن. ۳) باید فرم تراکنش باز شود. ۴) نسخه باید v5.0.0 باشد.</div>
-      </div>
-    `;
-  }
-  function renderTransactions() {
-    document.getElementById('transactions').innerHTML = `
-      <div class="card">
-        <div class="section-title">ثبت تراکنش</div>
-        <div class="grid2">
-          <div><label>نوع</label><select id="tr-type"><option value="expense">هزینه</option><option value="income">درآمد</option></select></div>
-          <div><label>مبلغ</label><input id="tr-amount" inputmode="numeric" placeholder="مثلاً 2500000"></div>
-          <div><label>دسته</label><select id="tr-category">${categories.map(c => `<option value="${c}">${c}</option>`).join('')}</select></div>
-          <div><label>تاریخ</label><input id="tr-date" value="${today()}"></div>
-          <div style="grid-column:1/-1"><label>یادداشت</label><input id="tr-note" placeholder="اختیاری"></div>
-        </div>
-        <div class="row" style="margin-top:12px">
-          <button type="button" class="btn" id="saveTransactionBtn">ذخیره تراکنش</button>
-          <button type="button" class="btn ghost" id="newAccountBtn">افزودن حساب</button>
-        </div>
-      </div>
-      <div class="card">
-        <div class="section-title">آخرین تراکنش‌ها</div>
-        <div class="list">
-          ${
-            state.transactions.length
-              ? state.transactions.slice().reverse().map(t => `
-                <div class="item">
-                  <div class="row">
-                    <strong>${t.type === 'income' ? 'درآمد' : 'هزینه'} - ${t.category}</strong>
-                    <button type="button" class="btn ghost del-transaction" data-id="${t.id}">حذف</button>
-                  </div>
-                  <div class="small muted">${t.date} | ${fmt(t.amount)} | ${t.note || '-'}</div>
-                </div>
-              `).join('')
-              : '<div class="empty">تراکنشی ثبت نشده است.</div>'
-          }
-        </div>
-      </div>
-    `;
-    document.getElementById('saveTransactionBtn').addEventListener('click', () => {
-      const type = document.getElementById('tr-type').value;
-      const amount = toNum(document.getElementById('tr-amount').value);
-      const category = document.getElementById('tr-category').value;
-      const date = document.getElementById('tr-date').value.trim() || today();
-      const note = document.getElementById('tr-note').value.trim();
-      if (!amount) {
-        alert('مبلغ معتبر نیست.');
-        return;
-      }
-      state.transactions.push({id: uid(), type, amount, category, date, note});
-      saveState();
-      alert('تراکنش ذخیره شد.');
-    });
-    document.getElementById('newAccountBtn').addEventListener('click', () => {
-      const name = prompt('نام حساب');
-      if (!name) return;
-      const openingBalance = toNum(prompt('موجودی اولیه') || '0');
-      state.accounts.push({id: uid(), name, openingBalance});
-      saveState();
-    });
-    document.querySelectorAll('.del-transaction').forEach(btn => btn.addEventListener('click', () => {
-      state.transactions = state.transactions.filter(t => t.id !== btn.dataset.id);
-      saveState();
-    }));
-  }
-  function budgetSuggestion(cat) {
-    if (cat === 'مسکن') return 26000000;
-    const hist = state.transactions.filter(t => t.type === 'expense' && t.category === cat);
-    if (!hist.length) return 0;
-    const avg = hist.reduce((a,t) => a + toNum(t.amount), 0) / hist.length;
-    return Math.round(avg * 1.2);
-  }
-  function renderBudgets() {
-    const month = currentMonth();
-    const list = categories.filter(c => c !== 'درآمد');
-    document.getElementById('budgets').innerHTML = `
-      <div class="card">
-        <div class="row wrap">
-          <div class="section-title">بودجه ماه ${month}</div>
-          <button type="button" class="btn secondary" id="autoBudgetBtn">پیشنهاد خودکار</button>
-        </div>
-        <div class="grid2">
-          ${list.map(cat => `<div><label>${cat}</label><input class="budget-input" data-cat="${cat}" inputmode="numeric" value="${planned(cat, month) || ''}" placeholder="${budgetSuggestion(cat) || 0}"></div>`).join('')}
-        </div>
-        <div class="row" style="margin-top:12px"><button type="button" class="btn" id="saveBudgetBtn">ذخیره بودجه‌ها</button></div>
-      </div>
-      <div class="card">
-        <div class="section-title">وضعیت عملکرد</div>
-        <table>
-          <thead><tr><th>دسته</th><th>بودجه</th><th>خرج</th><th>مانده</th></tr></thead>
-          <tbody>
-            ${list.map(cat => {
-              const p = planned(cat, month);
-              const s = categorySpent(cat, month);
-              const r = p - s;
-              return `<tr><td>${cat}</td><td>${fmt(p)}</td><td>${fmt(s)}</td><td class="${r<0?'danger':'ok'}">${fmt(r)}</td></tr>`;
-            }).join('')}
-          </tbody>
-        </table>
-      </div>
-    `;
-    document.getElementById('autoBudgetBtn').addEventListener('click', () => {
-      document.querySelectorAll('.budget-input').forEach(inp => inp.value = budgetSuggestion(inp.dataset.cat) || '');
-      log('پیشنهاد بودجه اعمال شد');
-    });
-    document.getElementById('saveBudgetBtn').addEventListener('click', () => {
-      document.querySelectorAll('.budget-input').forEach(inp => {
-        state.budgets[budgetKey(month, inp.dataset.cat)] = toNum(inp.value);
-      });
-      saveState();
-      alert('بودجه‌ها ذخیره شد.');
-    });
-  }
-  function renderFunds() {
-    document.getElementById('funds').innerHTML = `
-      <div class="card">
-        <div class="section-title">افزودن صندوق هدف‌دار</div>
-        <div class="grid2">
-          <div><label>عنوان</label><input id="fund-title" placeholder="مثلاً بیمه خودرو"></div>
-          <div><label>هدف</label><input id="fund-target" inputmode="numeric"></div>
-          <div><label>ذخیره فعلی</label><input id="fund-saved" inputmode="numeric"></div>
-          <div><label>سررسید</label><input id="fund-due" placeholder="1406/02/15"></div>
-          <div><label>نیاز ماهانه</label><input id="fund-monthly" inputmode="numeric"></div>
-        </div>
-        <div class="row" style="margin-top:12px"><button type="button" class="btn" id="saveFundBtn">افزودن صندوق</button></div>
-      </div>
-      <div class="card">
-        <div class="section-title">افزودن قسط</div>
-        <div class="grid2">
-          <div><label>عنوان</label><input id="ins-title" placeholder="قسط خودرو"></div>
-          <div><label>قسط ماهانه</label><input id="ins-monthly" inputmode="numeric"></div>
-          <div><label>مانده</label><input id="ins-remain" inputmode="numeric"></div>
-          <div><label>سررسید</label><input id="ins-due" placeholder="${currentMonth()}/18"></div>
-        </div>
-        <div class="row" style="margin-top:12px"><button type="button" class="btn" id="saveInstallmentBtn">افزودن قسط</button></div>
-      </div>
-      <div class="card">
-        <div class="section-title">لیست صندوق‌ها</div>
-        <div class="list">
-          ${
-            state.funds.length
-              ? state.funds.map(f => {
-                  const p = f.targetAmount ? Math.min(100, Math.round((toNum(f.savedAmount)/toNum(f.targetAmount))*100)) : 0;
-                  return `<div class="item"><div class="row"><strong>${f.title}</strong><button type="button" class="btn ghost del-fund" data-id="${f.id}">حذف</button></div><div class="small muted">هدف: ${fmt(f.targetAmount)} | ذخیره: ${fmt(f.savedAmount)} | سررسید: ${f.dueDate}</div><div class="small muted">نیاز ماهانه: ${fmt(f.monthlyRequired)}</div><div class="progress"><span style="width:${p}%"></span></div></div>`;
-                }).join('')
-              : '<div class="empty">صندوقی ثبت نشده است.</div>'
-          }
-        </div>
-      </div>
-      <div class="card">
-        <div class="section-title">لیست اقساط</div>
-        <div class="list">
-          ${
-            state.installments.length
-              ? state.installments.map(i => `<div class="item"><div class="row"><strong>${i.title}</strong><button type="button" class="btn ghost del-ins" data-id="${i.id}">حذف</button></div><div class="small muted">قسط ماهانه: ${fmt(i.monthlyAmount)} | مانده: ${fmt(i.remainingBalance)} | سررسید: ${i.dueDate}</div></div>`).join('')
-              : '<div class="empty">قسطی ثبت نشده است.</div>'
-          }
-        </div>
-      </div>
-    `;
-    document.getElementById('saveFundBtn').addEventListener('click', () => {
-      const title = document.getElementById('fund-title').value.trim();
-      const targetAmount = toNum(document.getElementById('fund-target').value);
-      const savedAmount = toNum(document.getElementById('fund-saved').value);
-      const dueDate = document.getElementById('fund-due').value.trim();
-      const monthlyRequired = toNum(document.getElementById('fund-monthly').value);
-      if (!title || !targetAmount) {
-        alert('اطلاعات صندوق ناقص است.');
-        return;
-      }
-      state.funds.push({id: uid(), title, targetAmount, savedAmount, dueDate, monthlyRequired});
-      saveState();
-      alert('صندوق ذخیره شد.');
-    });
-    document.getElementById('saveInstallmentBtn').addEventListener('click', () => {
-      const title = document.getElementById('ins-title').value.trim();
-      const monthlyAmount = toNum(document.getElementById('ins-monthly').value);
-      const remainingBalance = toNum(document.getElementById('ins-remain').value);
-      const dueDate = document.getElementById('ins-due').value.trim();
-      if (!title || !monthlyAmount) {
-        alert('اطلاعات قسط ناقص است.');
-        return;
-      }
-      state.installments.push({id: uid(), title, monthlyAmount, remainingBalance, dueDate});
-      saveState();
-      alert('قسط ذخیره شد.');
-    });
-    document.querySelectorAll('.del-fund').forEach(btn => btn.addEventListener('click', () => {
-      state.funds = state.funds.filter(x => x.id !== btn.dataset.id);
-      saveState();
-    }));
-    document.querySelectorAll('.del-ins').forEach(btn => btn.addEventListener('click', () => {
-      state.installments = state.installments.filter(x => x.id !== btn.dataset.id);
-      saveState();
-    }));
-  }
-  function generateAdvice() {
-    if (forecast30() < 0) return 'پیش‌بینی ۳۰ روزه منفی است. هزینه‌های غیرضروری را کم کن یا واریزی صندوق‌های کم‌اولویت را موقتاً کاهش بده.';
-    if (state.installments.length) return 'اولویت فعلی: مطمئن شو قسط نزدیک را قبل از هر هزینه اختیاری پوشش داده‌ای.';
-    if (monthExpense() > monthIncome()) return 'هزینه ماه از درآمد جلو زده است. سقف بودجه چند دسته باید پایین بیاید.';
-    return 'وضعیت فعلی قابل‌قبول است. اکنون بهترین کار ساخت صندوق اضطراری یا افزایش پس‌انداز است.';
-  }
-  function renderReports() {
-    document.getElementById('reports').innerHTML = `
-      <div class="card">
-        <div class="section-title">جمع‌بندی</div>
-        <div class="metric-grid">
-          <div class="metric"><div class="label">میانگین درآمد</div><div class="value">${fmt(monthIncome())}</div></div>
-          <div class="metric"><div class="label">میانگین هزینه</div><div class="value">${fmt(monthExpense())}</div></div>
-          <div class="metric"><div class="label">پیش‌بینی ۳۰ روزه</div><div class="value ${forecast30()<0?'danger':'ok'}">${fmt(forecast30())}</div></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="section-title">پیشنهاد عملی</div>
-        <div class="notice">${generateAdvice()}</div>
-      </div>
-      <div class="card">
-        <div class="row wrap">
-          <div class="section-title">پشتیبان و دیباگ</div>
-          <div class="small muted">این جعبه برای اطمینان از کارکرد JS است.</div>
-        </div>
-        <div class="row wrap" style="margin-bottom:12px">
-          <button type="button" class="btn secondary" id="exportBtn">خروجی JSON</button>
-          <button type="button" class="btn secondary" id="importBtn">ورود JSON</button>
-          <button type="button" class="btn ghost" id="resetBtn">پاک‌سازی کامل</button>
-          <button type="button" class="btn ghost" id="selfTestBtn">تست دکمه‌ها</button>
-        </div>
-        <input id="importFile" type="file" accept="application/json" style="display:none">
-        <div id="debugBox" class="debug"></div>
-      </div>
-    `;
-    document.getElementById('exportBtn').addEventListener('click', () => {
-      const blob = new Blob([JSON.stringify(state, null, 2)], {type:'application/json'});
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'hambodje-backup-v5.json';
-      a.click();
-      URL.revokeObjectURL(a.href);
-      log('خروجی JSON گرفته شد');
-    });
-    document.getElementById('importBtn').addEventListener('click', () => document.getElementById('importFile').click());
-    document.getElementById('importFile').addEventListener('change', (ev) => {
-      const file = ev.target.files && ev.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = () => {
-        try {
-          const data = JSON.parse(String(reader.result || '{}'));
-          if (!data || !Array.isArray(data.accounts) || !Array.isArray(data.transactions)) throw new Error('bad');
-          localStorage.setItem(APP_KEY, JSON.stringify(data));
-          location.reload();
-        } catch (e) {
-          alert('فایل معتبر نیست.');
-        }
-      };
-      reader.readAsText(file);
-    });
-    document.getElementById('resetBtn').addEventListener('click', () => {
-      if (!confirm('همه داده‌ها پاک شود؟')) return;
-      localStorage.removeItem(APP_KEY);
-      location.reload();
-    });
-    document.getElementById('selfTestBtn').addEventListener('click', () => {
-      log('تست دکمه‌ها اجرا شد');
-      alert('جاوااسکریپت فعال است و دکمه‌ها کار می‌کنند.');
-    });
-    const box = document.getElementById('debugBox');
-    if (box) box.textContent = logBuffer.join('\n');
-  }
-  function renderTab(name) {
-    if (name === 'dashboard') renderDashboard();
-    if (name === 'transactions') renderTransactions();
-    if (name === 'budgets') renderBudgets();
-    if (name === 'funds') renderFunds();
-    if (name === 'reports') renderReports();
-  }
-  function render() {
-    makeTabs();
-    renderTab(state.activeTab);
-  }
-
-  document.getElementById('themeBtn').addEventListener('click', () => {
-    const dark = document.body.classList.contains('dark');
-    applyTheme(dark ? 'light' : 'dark');
-  });
-  document.getElementById('demoBtn').addEventListener('click', () => seedDemoData());
-  document.getElementById('addBtn').addEventListener('click', () => {
-    switchTab('transactions');
-    window.scrollTo({top:0, behavior:'smooth'});
-  });
-
-  applyTheme(localStorage.getItem(THEME_KEY) || 'light');
-  render();
-  log('JS بارگذاری شد - ' + VERSION);
-})();
+const KEY='hambodje.v6';
+const THEME_KEY='hambodje.theme';
+const categories=['مسکن','خوراک','حمل‌ونقل','درمان','آموزش','خانواده','ارتباطات','تفریح','بدهی','پس‌انداز','درآمد'];
+const state=loadState();
+const tabs=[['dashboard','داشبورد','⌂'],['transactions','تراکنش‌ها','⇄'],['budgets','بودجه','◫'],['funds','صندوق‌ها','◌'],['reports','گزارش','◔']];
+let editingTransactionId=null;
+function id(){ return Math.random().toString(36).slice(2,10)+Date.now().toString(36).slice(-4); }
+function toNum(v){ if(v===undefined||v===null) return 0; return Number(String(v).replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/,/g,'').trim())||0; }
+function fmt(n){ return new Intl.NumberFormat('fa-IR').format(Math.round(n||0)); }
+function todayShamsi(){ const s=new Intl.DateTimeFormat('fa-IR-u-ca-persian',{year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()); const nums=String(s).match(/[۰-۹0-9]+/g) || []; return nums.map(x=>String(toNum(x)).padStart(2,'0')).join('/').replace(/^(\d{4})\/(\d{2})\/(\d{2})$/,'$1/$2/$3'); }
+function currentMonth(){ return todayShamsi().slice(0,7); }
+function monthOf(d){ return (d||'').slice(0,7); }
+function budgetKey(month,cat){ return `${month}|${cat}`; }
+function transactionSigned(t){ return t.type==='income' ? t.amount : -t.amount; }
+function loadState(){ const raw=localStorage.getItem(KEY); if(raw){ try { return JSON.parse(raw); } catch(e){} } return { household:'خانواده من', currency:'تومان', accounts:[{id:id(),name:'بانک اصلی',type:'بانک',openingBalance:0}], transactions:[], budgets:{}, funds:[], installments:[], activeTab:'dashboard' }; }
+function saveState(){ localStorage.setItem(KEY, JSON.stringify(state)); render(); }
+function applyTheme(theme){ const dark = theme!=='light'; document.body.classList.toggle('theme-dark', dark); localStorage.setItem(THEME_KEY, dark?'dark':'light'); document.getElementById('themeLabel').textContent = dark ? 'تم روشن' : 'تم تیره'; document.getElementById('themeIcon').textContent = dark ? '☀️' : '🌙'; }
+function loadTheme(){ applyTheme(localStorage.getItem(THEME_KEY)||'dark'); }
+function openingBalance(){ return state.accounts.reduce((a,b)=>a+toNum(b.openingBalance),0); }
+function totalBalance(){ return openingBalance()+state.transactions.reduce((a,t)=>a+transactionSigned(t),0); }
+function monthTransactions(month=currentMonth()){ return state.transactions.filter(t=>monthOf(t.date)===month); }
+function monthIncome(month=currentMonth()){ return monthTransactions(month).filter(t=>t.type==='income').reduce((a,t)=>a+t.amount,0); }
+function monthExpense(month=currentMonth()){ return monthTransactions(month).filter(t=>t.type==='expense').reduce((a,t)=>a+t.amount,0); }
+function categorySpent(cat, month=currentMonth()){ return monthTransactions(month).filter(t=>t.type==='expense'&&t.category===cat).reduce((a,t)=>a+t.amount,0); }
+function planned(cat, month=currentMonth()){ return toNum(state.budgets[budgetKey(month,cat)]||0); }
+function upcomingInstallments(){ return state.installments.filter(x=>x.active!==false).sort((a,b)=>(a.dueDate||'').localeCompare(b.dueDate||'')); }
+function lastMonths(n){ const arr=[]; let [y,m]=currentMonth().split('/').map(toNum); for(let i=0;i<n;i++){ arr.push(String(y).padStart(4,'0')+'/'+String(m).padStart(2,'0')); m--; if(m<1){m=12;y--;}} return arr; }
+function averageMonthlyExpense(m=3){ const months=lastMonths(m); if(!months.length) return 0; return months.reduce((a,mo)=>a+monthExpense(mo),0)/months.length; }
+function averageMonthlyIncome(m=3){ const months=lastMonths(m); if(!months.length) return 0; return months.reduce((a,mo)=>a+monthIncome(mo),0)/months.length; }
+function forecast30(){ const avgVar = averageMonthlyExpense(3); const installmentsNext30 = state.installments.filter(x=>x.active!==false).reduce((a,x)=>a+toNum(x.monthlyAmount||0),0); const fundsNeed = state.funds.reduce((a,f)=>a+toNum(f.monthlyRequired||0),0); const income = averageMonthlyIncome(3); return totalBalance() + income - avgVar - installmentsNext30 - fundsNeed; }
+function computeBudgetSuggestion(cat){ const months=lastMonths(3); const values=months.map(m=>categorySpent(cat,m)); const avg = values.reduce((a,b)=>a+b,0)/(values.length||1); const max = Math.max(0,...values); const volatility = Math.max(0,max-avg); return Math.round(avg + volatility*0.25); }
+function seedDemoFn(){ state.accounts=[{id:id(),name:'بانک ملت',type:'بانک',openingBalance:85000000},{id:id(),name:'نقد',type:'نقد',openingBalance:3500000}]; state.transactions=[{id:id(),type:'income',amount:65000000,category:'درآمد',accountId:state.accounts[0].id,date:currentMonth()+'/01',note:'حقوق'},{id:id(),type:'expense',amount:7800000,category:'مسکن',accountId:state.accounts[0].id,date:currentMonth()+'/02',note:'اجاره'},{id:id(),type:'expense',amount:4200000,category:'خوراک',accountId:state.accounts[0].id,date:currentMonth()+'/05',note:'سوپرمارکت'},{id:id(),type:'expense',amount:1800000,category:'حمل‌ونقل',accountId:state.accounts[1].id,date:currentMonth()+'/06',note:'بنزین'},{id:id(),type:'expense',amount:2300000,category:'ارتباطات',accountId:state.accounts[0].id,date:currentMonth()+'/07',note:'اینترنت و موبایل'},{id:id(),type:'expense',amount:2500000,category:'درمان',accountId:state.accounts[0].id,date:currentMonth()+'/10',note:'آزمایش'}]; state.budgets={}; [['مسکن',12000000],['خوراک',10000000],['حمل‌ونقل',5000000],['درمان',3000000],['ارتباطات',2500000],['تفریح',4000000]].forEach(([c,v])=>state.budgets[budgetKey(currentMonth(),c)]=v); state.funds=[{id:id(),title:'بیمه خودرو',targetAmount:30000000,savedAmount:12000000,dueDate:'1406/02/15',monthlyRequired:3000000,priority:1},{id:id(),title:'سفر تابستان',targetAmount:50000000,savedAmount:9000000,dueDate:'1405/05/01',monthlyRequired:7000000,priority:2}]; state.installments=[{id:id(),title:'قسط خودرو',monthlyAmount:8500000,remainingBalance:187000000,dueDate:currentMonth()+'/18',active:true}]; saveState(); }
+function setActiveTab(tab){ state.activeTab=tab; localStorage.setItem(KEY, JSON.stringify(state)); render(); window.scrollTo({top:0,behavior:'smooth'}); }
+function render(){ renderTabs(); renderDashboard(); renderTransactions(); renderBudgets(); renderFunds(); renderReports(); document.querySelectorAll('.screen').forEach(el=>el.classList.toggle('active', el.id===`screen-${state.activeTab}`)); document.querySelectorAll('.tab').forEach(el=>el.classList.toggle('active', el.dataset.tab===state.activeTab)); }
+function renderTabs(){ tabsEl.innerHTML=tabs.map(([k,v,icon])=>`<button class="tab ${state.activeTab===k?'active':''}" data-tab="${k}"><div class="tab-icon">${icon}</div><div class="tab-label">${v}</div></button>`).join(''); tabsEl.querySelectorAll('.tab').forEach(b=>b.onclick=()=>setActiveTab(b.dataset.tab)); }
+function renderDashboard(){ const month=currentMonth(), income=monthIncome(month), expense=monthExpense(month), balance=totalBalance(), f30=forecast30(); const topCats=categories.filter(c=>c!=='درآمد').map(c=>({cat:c,spent:categorySpent(c,month),plan:planned(c,month)})).filter(x=>x.spent||x.plan).sort((a,b)=>b.spent-a.spent).slice(0,5); const alerts=[]; topCats.forEach(x=>{ if(x.plan>0 && x.spent>x.plan) alerts.push(`دسته «${x.cat}» از بودجه عبور کرده است.`); else if(x.plan>0 && x.spent/x.plan>=0.85) alerts.push(`دسته «${x.cat}» به ${fmt(Math.round((x.spent/x.plan)*100))}٪ بودجه رسیده است.`); }); upcomingInstallments().slice(0,2).forEach(x=>alerts.push(`سررسید «${x.title}» در ${x.dueDate} به مبلغ ${fmt(x.monthlyAmount)} تومان.`)); dashboard.innerHTML=`<div class="card"><div class="section-head"><div><div class="section-title">وضعیت مالی ماه ${month}</div><div class="section-sub">خانوار: ${state.household}</div></div><div class="badge ${f30<0?'danger':'ok'}">پیش‌بینی ۳۰ روزه: ${f30<0?'کسری':'مثبت'}</div></div><div class="grid g2"><div class="metric"><div class="label">مانده کل</div><div class="value">${fmt(balance)}</div><div class="sm muted">تومان</div></div><div class="metric"><div class="label">باقی‌مانده این ماه</div><div class="value ${income-expense<0?'danger-t':'ok-t'}">${fmt(income-expense)}</div><div class="sm muted">تومان</div></div><div class="metric"><div class="label">درآمد ماه</div><div class="value">${fmt(income)}</div><div class="sm muted">تومان</div></div><div class="metric"><div class="label">هزینه ماه</div><div class="value">${fmt(expense)}</div><div class="sm muted">تومان</div></div></div></div><div class="card"><div class="section-head"><div class="section-title">هشدارها</div></div><div class="list">${alerts.length?alerts.map(a=>`<div class="notice">${a}</div>`).join(''):'<div class="empty">هشدار مهمی ثبت نشده است.</div>'}</div></div><div class="card"><div class="section-head"><div class="section-title">مصرف بودجه دسته‌ها</div></div><div class="list">${topCats.length?topCats.map(x=>{ const p=x.plan?Math.min(100,Math.round((x.spent/x.plan)*100)):0; const cls=x.plan&&x.spent>x.plan?'danger':p>=85?'warn':'ok'; return `<div class="item"><div class="row"><strong>${x.cat}</strong><span class="badge ${cls}">${x.plan?fmt(p)+'٪':'بدون بودجه'}</span></div><div class="sm muted">خرج: ${fmt(x.spent)} / بودجه: ${fmt(x.plan)}</div><div class="progress"><span style="width:${Math.min(100,p)}%"></span></div></div>`; }).join(''):'<div class="empty">هنوز تراکنش یا بودجه‌ای ثبت نشده است.</div>'}</div></div>`; }
+function renderTransactions(){ const rows=[...state.transactions].sort((a,b)=>(b.date||'').localeCompare(a.date||'')); const current = editingTransactionId ? state.transactions.find(t=>t.id===editingTransactionId) : null; transactions.innerHTML=`<div class="card"><div class="section-head"><div><div class="section-title">${current?'ویرایش تراکنش':'ثبت تراکنش'}</div><div class="section-sub">${current?'اطلاعات تراکنش انتخاب‌شده را اصلاح کن.':'ثبت سریع برای درآمد و هزینه روزانه.'}</div></div>${current?'<button class="btn secondary sm" id="cancelEdit">لغو ویرایش</button>':''}</div><div class="grid g2"><div><label>نوع</label><select id="t-type"><option value="expense" ${!current||current.type==='expense'?'selected':''}>هزینه</option><option value="income" ${current&&current.type==='income'?'selected':''}>درآمد</option></select></div><div><label>مبلغ</label><input id="t-amount" inputmode="numeric" placeholder="مثلاً 2500000" value="${current?current.amount:''}"></div><div><label>دسته</label><select id="t-category">${categories.map(c=>`<option value="${c}" ${current&&current.category===c?'selected':''}>${c}</option>`).join('')}</select></div><div><label>حساب</label><select id="t-account">${state.accounts.map(a=>`<option value="${a.id}" ${current&&current.accountId===a.id?'selected':''}>${a.name}</option>`).join('')}</select></div><div><label>تاریخ شمسی</label><input id="t-date" value="${current?current.date:todayShamsi()}" placeholder="1405/01/12"></div><div><label>یادداشت</label><input id="t-note" placeholder="اختیاری" value="${current?.note||''}"></div></div><div class="inline-actions" style="margin-top:12px"><button class="btn primary" id="saveT">${current?'ذخیره ویرایش':'ذخیره تراکنش'}</button><button class="btn secondary" id="newAccountBtn">حساب جدید</button></div></div><div class="card"><div class="section-head"><div class="section-title">آخرین تراکنش‌ها</div><div class="section-sub">${rows.length} مورد</div></div><div class="list">${rows.length?rows.map(t=>`<div class="item"><div class="row"><strong>${t.note||t.category}</strong><span class="${t.type==='income'?'ok-t':'danger-t'}">${t.type==='income'?'+':'-'} ${fmt(t.amount)}</span></div><div class="sm muted" style="margin-top:6px">${t.date} | ${t.category} | ${(state.accounts.find(a=>a.id===t.accountId)||{}).name||'-'}</div><div class="row" style="margin-top:12px"><span class="badge">${t.type==='income'?'درآمد':'هزینه'}</span><div class="inline-actions"><button class="btn ghost sm" data-edit="${t.id}">ویرایش</button><button class="btn danger sm" data-del="${t.id}">حذف</button></div></div></div>`).join(''):'<div class="empty">تراکنشی ثبت نشده است.</div>'}</div></div><div class="card"><div class="section-head"><div class="section-title">حساب‌ها</div></div><table><thead><tr><th>نام</th><th>نوع</th><th>موجودی اولیه</th></tr></thead><tbody>${state.accounts.map(a=>`<tr><td>${a.name}</td><td>${a.type}</td><td>${fmt(a.openingBalance)}</td></tr>`).join('')}</tbody></table></div>`; document.getElementById('saveT').onclick=()=>{ const type=document.getElementById('t-type').value; const amount=toNum(document.getElementById('t-amount').value); const category=document.getElementById('t-category').value; const accountId=document.getElementById('t-account').value; const date=document.getElementById('t-date').value || todayShamsi(); const note=document.getElementById('t-note').value.trim(); if(!amount) return alert('مبلغ معتبر نیست.'); if(editingTransactionId){ const idx=state.transactions.findIndex(t=>t.id===editingTransactionId); if(idx>-1) state.transactions[idx]={...state.transactions[idx],type,amount,category,accountId,date,note}; editingTransactionId=null; } else { state.transactions.push({id:id(),type,amount,category,accountId,date,note}); } saveState(); setActiveTab('transactions'); }; document.getElementById('newAccountBtn').onclick=()=>{ const name=prompt('نام حساب'); if(!name) return; const type=prompt('نوع حساب: نقد / بانک / کیف پول / اعتباری')||'بانک'; const openingBalance=toNum(prompt('موجودی اولیه')); state.accounts.push({id:id(),name,type,openingBalance}); saveState(); }; document.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{ if(confirm('حذف شود؟')){ state.transactions=state.transactions.filter(t=>t.id!==b.dataset.del); if(editingTransactionId===b.dataset.del) editingTransactionId=null; saveState(); setActiveTab('transactions'); }}); document.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>{ editingTransactionId=b.dataset.edit; state.activeTab='transactions'; render(); window.scrollTo({top:0,behavior:'smooth'}); }); const cancel=document.getElementById('cancelEdit'); if(cancel) cancel.onclick=()=>{ editingTransactionId=null; render(); }; }
+function renderBudgets(){ const month=currentMonth(); const cats=categories.filter(c=>c!=='درآمد'); budgets.innerHTML=`<div class="card"><div class="section-head"><div><div class="section-title">بودجه ماه ${month}</div><div class="section-sub">بودجه هر دسته را ثبت یا اصلاح کن.</div></div><button class="btn secondary sm" id="autoBudget">پیشنهاد خودکار</button></div><div class="grid g2">${cats.map(c=>`<div><label>${c}</label><input data-budget="${c}" inputmode="numeric" value="${planned(c,month)||''}" placeholder="${fmt(computeBudgetSuggestion(c))}"></div>`).join('')}</div><div class="inline-actions" style="margin-top:12px"><button class="btn primary" id="saveBudgets">ذخیره بودجه‌ها</button></div></div><div class="card"><div class="section-head"><div class="section-title">وضعیت عملکرد</div></div><table><thead><tr><th>دسته</th><th>بودجه</th><th>خرج‌شده</th><th>باقی‌مانده</th><th>وضعیت</th></tr></thead><tbody>${cats.map(c=>{ const p=planned(c,month), s=categorySpent(c,month), r=p-s; const status=p===0?'بدون بودجه':s>p?'عبور':(p&&s/p>=0.85)?'لب مرز':'نرمال'; const cls=s>p?'danger-t':(p&&s/p>=0.85?'warn-t':'ok-t'); return `<tr><td>${c}</td><td>${fmt(p)}</td><td>${fmt(s)}</td><td class="${r<0?'danger-t':'ok-t'}">${fmt(r)}</td><td class="${cls}">${status}</td></tr>`; }).join('')}</tbody></table></div>`; document.getElementById('saveBudgets').onclick=()=>{ budgets.querySelectorAll('[data-budget]').forEach(i=>state.budgets[budgetKey(month,i.dataset.budget)]=toNum(i.value)); saveState(); }; document.getElementById('autoBudget').onclick=()=>{ budgets.querySelectorAll('[data-budget]').forEach(i=>i.value=computeBudgetSuggestion(i.dataset.budget)||''); }; }
+function renderFunds(){ funds.innerHTML=`<div class="card"><div class="section-head"><div><div class="section-title">صندوق‌های هدف‌دار</div><div class="section-sub">هزینه‌های دوره‌ای و اهداف مالی آینده</div></div></div><div class="grid g2"><div><label>عنوان</label><input id="f-title" placeholder="مثلاً بیمه خودرو"></div><div><label>هدف</label><input id="f-target" inputmode="numeric"></div><div><label>ذخیره فعلی</label><input id="f-saved" inputmode="numeric"></div><div><label>سررسید</label><input id="f-due" placeholder="1406/02/15"></div><div><label>نیاز ماهانه</label><input id="f-monthly" inputmode="numeric"></div></div><div class="inline-actions" style="margin-top:12px"><button class="btn primary" id="saveFund">افزودن صندوق</button></div></div><div class="card"><div class="section-head"><div><div class="section-title">اقساط و بدهی‌ها</div><div class="section-sub">سررسیدهای ماهانه و بدهی‌های فعال</div></div></div><div class="grid g2"><div><label>عنوان قسط</label><input id="i-title" placeholder="قسط خودرو"></div><div><label>مبلغ ماهانه</label><input id="i-monthly" inputmode="numeric"></div><div><label>مانده</label><input id="i-remain" inputmode="numeric"></div><div><label>تاریخ سررسید</label><input id="i-due" placeholder="1405/01/18"></div></div><div class="inline-actions" style="margin-top:12px"><button class="btn primary" id="saveInstallment">افزودن قسط</button></div></div><div class="card"><div class="section-head"><div class="section-title">لیست صندوق‌ها</div></div><div class="list">${state.funds.length?state.funds.map(f=>{ const p=f.targetAmount?Math.min(100,Math.round((f.savedAmount/f.targetAmount)*100)):0; return `<div class="item"><div class="row"><strong>${f.title}</strong><button class="btn danger sm" data-fdel="${f.id}">حذف</button></div><div class="sm muted" style="margin-top:6px">هدف: ${fmt(f.targetAmount)} | ذخیره: ${fmt(f.savedAmount)} | سررسید: ${f.dueDate}</div><div class="sm muted">نیاز ماهانه: ${fmt(f.monthlyRequired)}</div><div class="progress"><span style="width:${p}%"></span></div></div>`; }).join(''):'<div class="empty">صندوقی ثبت نشده است.</div>'}</div></div><div class="card"><div class="section-head"><div class="section-title">لیست اقساط</div></div><div class="list">${state.installments.length?state.installments.map(i=>`<div class="item"><div class="row"><strong>${i.title}</strong><button class="btn danger sm" data-idel="${i.id}">حذف</button></div><div class="sm muted" style="margin-top:6px">قسط ماهانه: ${fmt(i.monthlyAmount)} | مانده: ${fmt(i.remainingBalance)} | سررسید: ${i.dueDate}</div></div>`).join(''):'<div class="empty">قسطی ثبت نشده است.</div>'}</div></div>`; document.getElementById('saveFund').onclick=()=>{ const title=document.getElementById('f-title').value.trim(), targetAmount=toNum(document.getElementById('f-target').value), savedAmount=toNum(document.getElementById('f-saved').value), dueDate=document.getElementById('f-due').value.trim(), monthlyRequired=toNum(document.getElementById('f-monthly').value); if(!title||!targetAmount) return alert('اطلاعات صندوق کامل نیست.'); state.funds.push({id:id(),title,targetAmount,savedAmount,dueDate,monthlyRequired}); saveState(); }; document.getElementById('saveInstallment').onclick=()=>{ const title=document.getElementById('i-title').value.trim(), monthlyAmount=toNum(document.getElementById('i-monthly').value), remainingBalance=toNum(document.getElementById('i-remain').value), dueDate=document.getElementById('i-due').value.trim(); if(!title||!monthlyAmount) return alert('اطلاعات قسط کامل نیست.'); state.installments.push({id:id(),title,monthlyAmount,remainingBalance,dueDate,active:true}); saveState(); }; document.querySelectorAll('[data-fdel]').forEach(b=>b.onclick=()=>{ state.funds=state.funds.filter(x=>x.id!==b.dataset.fdel); saveState();}); document.querySelectorAll('[data-idel]').forEach(b=>b.onclick=()=>{ state.installments=state.installments.filter(x=>x.id!==b.dataset.idel); saveState();}); }
+function renderReports(){ const months=lastMonths(6); const rows=months.map(m=>({m,income:monthIncome(m),expense:monthExpense(m)})); const totalExp=rows.reduce((a,b)=>a+b.expense,0)||1; const cats=categories.filter(c=>c!=='درآمد').map(c=>({cat:c,spent:categorySpent(c,currentMonth())})).filter(x=>x.spent).sort((a,b)=>b.spent-a.spent); reports.innerHTML=`<div class="card"><div class="section-head"><div class="section-title">جمع‌بندی</div></div><div class="grid g3"><div class="metric"><div class="label">میانگین درآمد ۳ ماه</div><div class="value">${fmt(averageMonthlyIncome(3))}</div></div><div class="metric"><div class="label">میانگین هزینه ۳ ماه</div><div class="value">${fmt(averageMonthlyExpense(3))}</div></div><div class="metric"><div class="label">پیش‌بینی ۳۰ روزه</div><div class="value ${forecast30()<0?'danger-t':'ok-t'}">${fmt(forecast30())}</div></div></div></div><div class="card"><div class="section-head"><div class="section-title">روند ۶ ماهه</div></div><table><thead><tr><th>ماه</th><th>درآمد</th><th>هزینه</th><th>خالص</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${r.m}</td><td>${fmt(r.income)}</td><td>${fmt(r.expense)}</td><td class="${r.income-r.expense<0?'danger-t':'ok-t'}">${fmt(r.income-r.expense)}</td></tr>`).join('')}</tbody></table></div><div class="card"><div class="section-head"><div class="section-title">سهم دسته‌های این ماه</div></div><div class="list">${cats.length?cats.map(c=>`<div class="item"><div class="row"><strong>${c.cat}</strong><span>${fmt(Math.round((c.spent/totalExp)*100))}٪</span></div><div class="sm muted">${fmt(c.spent)} تومان</div><div class="progress"><span style="width:${Math.round((c.spent/totalExp)*100)}%"></span></div></div>`).join(''):'<div class="empty">برای این ماه داده‌ای وجود ندارد.</div>'}</div></div><div class="card"><div class="section-head"><div class="section-title">پیشنهاد عملی</div></div><div class="notice">${generateAdvice()}</div><div class="inline-actions" style="margin-top:12px"><button class="btn secondary" id="exportBtn">خروجی JSON</button><button class="btn danger" id="resetBtn">پاک‌سازی کامل</button></div></div>`; document.getElementById('exportBtn').onclick=()=>{ const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='hambodje-backup.json'; a.click(); URL.revokeObjectURL(a.href); }; document.getElementById('resetBtn').onclick=()=>{ if(confirm('همه داده‌ها پاک شود؟')){ localStorage.removeItem(KEY); location.reload(); } }; }
+function generateAdvice(){ const month=currentMonth(); const income=monthIncome(month), expense=monthExpense(month); const over=categories.filter(c=>c!=='درآمد').map(c=>({c,p:planned(c,month),s:categorySpent(c,month)})).filter(x=>x.p>0&&x.s>x.p).sort((a,b)=>(b.s-b.p)-(a.s-a.p))[0]; if(forecast30()<0) return 'پیش‌بینی ۳۰ روزه منفی است. فعلاً باید واریزی به صندوق‌های کم‌اولویت را کم کنید یا بودجه دسته‌های غیرضروری را پایین بیاورید.'; if(over) return `بیشترین انحراف مربوط به «${over.c}» است. انتقال بودجه از دسته‌های کم‌مصرف یا محدودکردن هزینه همین دسته، اولویت دارد.`; if(income>0 && expense/income<0.7) return 'وضعیت ماه جاری نسبتاً کنترل‌شده است. اکنون بهترین اقدام، افزایش ذخیره صندوق اضطراری یا تسویه بخشی از بدهی است.'; return 'اطلاعات کافی برای توصیه دقیق‌تر نیست. چند تراکنش و بودجه بیشتر ثبت کنید.'; }
+const tabsEl=document.getElementById('tabs'); const dashboard=document.getElementById('screen-dashboard'); const transactions=document.getElementById('screen-transactions'); const budgets=document.getElementById('screen-budgets'); const funds=document.getElementById('screen-funds'); const reports=document.getElementById('screen-reports');
+document.getElementById('seedDemo').addEventListener('click', seedDemoFn); document.getElementById('quickAdd').addEventListener('click', ()=>setActiveTab('transactions')); document.getElementById('themeToggle').addEventListener('click', ()=>{ applyTheme(document.body.classList.contains('theme-dark') ? 'light' : 'dark'); }); loadTheme(); render();
 </script>
 </body>
 </html>
