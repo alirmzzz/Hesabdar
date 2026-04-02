@@ -68,60 +68,6 @@
     .brand h1{margin:0;font-size:38px;line-height:1;font-weight:900;letter-spacing:-.03em}
     .brand p{margin:8px 0 0;color:var(--muted);font-size:13px}
     .top-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;align-items:flex-start}
-    .minimal-app{max-width:760px}
-    .minimal-topbar{grid-template-columns:1fr auto;align-items:center;margin-bottom:8px}
-    .brand-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-    .top-settings-btn{align-self:start}
-    .hero-minimal{padding:12px;margin-bottom:10px}
-    .entry-head.compact{margin-bottom:8px}
-    .hero-mini-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
-    .mini-stat.compact{padding:10px 12px;border-radius:16px;min-height:auto}
-    .next-pill-wrap{margin-top:10px;display:grid;gap:8px}
-    .action-inline{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.03)}
-    .action-inline .copy{min-width:0;text-align:right}
-    .action-inline strong{display:block;font-size:14px}
-    .action-inline span{display:block;color:var(--muted);font-size:12px;margin-top:4px;line-height:1.5}
-    .layout.single-column{display:grid;grid-template-columns:1fr;gap:10px}
-    .panel-shell{min-height:200px}
-    .section-title.minimal{font-size:20px}
-    .overview-grid.minimal{grid-template-columns:repeat(3,1fr);gap:8px}
-    .overview-card.minimal{padding:12px;border-radius:18px;min-height:84px}
-    .overview-card.minimal .n{font-size:28px}
-    .budget-wrap.minimal{grid-template-columns:220px 1fr;gap:8px}
-    .legend.compact{gap:4px}
-    .legend.compact .legend-row{padding:6px 0}
-    .tx-item.minimal{padding:10px;border-radius:18px}
-    .tx-icon.minimal{width:40px;height:40px;border-radius:14px}
-    .tx-text .name.minimal{font-size:16px}
-    .tx-amount.minimal{font-size:20px}
-    .accordion.minimal{gap:8px}
-    details.acc{transition:background .2s ease,border-color .2s ease,transform .18s ease}
-    details.acc[open]{transform:translateY(-1px)}
-    details.acc .acc-body{animation:accIn .22s ease}
-    @keyframes accIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
-    .tab{overflow:hidden}
-    .tab.active{transform:translateY(-1px)}
-    .tab::after,.chipbtn::after,.ghost-btn::after,.more-btn::after,.mini-btn::after,.iconbtn::after,.quick-chip::after,.btn::after{
-      content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;
-      background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,0));
-      opacity:0;transition:opacity .18s ease;
-    }
-    [data-theme="light"] .tab::after,[data-theme="light"] .chipbtn::after,[data-theme="light"] .ghost-btn::after,[data-theme="light"] .more-btn::after,[data-theme="light"] .mini-btn::after,[data-theme="light"] .iconbtn::after,[data-theme="light"] .quick-chip::after,[data-theme="light"] .btn::after{
-      background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,255,255,0));
-    }
-    .tab:hover::after,.chipbtn:hover::after,.ghost-btn:hover::after,.more-btn:hover::after,.mini-btn:hover::after,.iconbtn:hover::after,.quick-chip:hover::after,.btn:hover::after{opacity:.55}
-    .tab:active::after,.chipbtn:active::after,.ghost-btn:active::after,.more-btn:active::after,.mini-btn:active::after,.iconbtn:active::after,.quick-chip:active::after,.btn:active::after{opacity:.95}
-    .sheet-backdrop{opacity:0;transition:opacity .22s ease}
-    .sheet-backdrop.open{display:flex;opacity:1}
-    .sheet{transform:translateY(24px) scale(.985);opacity:0;transition:transform .25s cubic-bezier(.2,.8,.2,1),opacity .22s ease}
-    .sheet-backdrop.open .sheet{transform:translateY(0) scale(1);opacity:1}
-    .dialog-card{animation:dialogIn .24s cubic-bezier(.2,.8,.2,1)}
-    .view-enter{animation:viewIn .26s cubic-bezier(.2,.8,.2,1)}
-    @keyframes viewIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-    @media (max-width:700px){
-      .budget-wrap.minimal{grid-template-columns:1fr}
-    }
-
     .chipbtn,.iconbtn,.btn,.seg button,.tab,.fab,.mini-btn,.action-pill,.quick-chip,.tag-btn,.more-btn,.ghost-btn{transition:transform .14s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease, opacity .18s ease}
     .chipbtn,.iconbtn,.tab,.ghost-btn,.tag-btn,.more-btn,.mini-btn{border:1px solid var(--buttonBorder);background:var(--buttonBg);color:var(--text);box-shadow:var(--buttonShadow);position:relative}
     .chipbtn{height:42px;padding:0 14px;border-radius:999px;display:inline-flex;gap:8px;align-items:center;font-weight:800}
@@ -320,57 +266,152 @@
     input[type="range"]{padding:0;border:none;background:transparent}
     @media (max-width:720px){.settings-grid{grid-template-columns:1fr}}
 
+  
+    /* v14 minimalist shell overrides */
+    .app{max-width:720px;padding:10px 12px 92px}
+    .topbar{grid-template-columns:1fr auto;align-items:center;margin-bottom:8px}
+    .brand{padding:4px 2px}
+    .brand h1{font-size:34px;letter-spacing:-.04em}
+    .brand p{margin-top:6px;font-size:12px;max-width:32ch}
+    .top-actions{gap:6px}
+    .top-actions #themeToggle,.top-actions #seedDemo{display:none}
+    .version{height:30px;padding:0 10px}
+    .hero{padding:12px;border-radius:24px;margin-bottom:10px;background:linear-gradient(180deg,rgba(255,255,255,.022),rgba(255,255,255,.01));}
+    .hero-grid{grid-template-columns:1fr;gap:10px}
+    .smart-entry,.next-actions,.panel.compact{border-radius:22px}
+    .smart-entry,.next-actions{padding:14px}
+    .entry-head{gap:10px;align-items:flex-start}
+    .entry-title{font-size:18px}
+    .entry-sub{font-size:11px}
+    .seg{padding:4px;gap:4px}
+    .seg button{height:34px;padding:0 12px;border-radius:10px}
+    .composer{grid-template-columns:1fr auto;gap:8px;margin-top:10px}
+    .composer input{height:52px;border-radius:16px;padding:0 14px;font-size:17px}
+    .btn{height:52px;border-radius:16px;padding:0 16px}
+    .quick-row{gap:6px;margin-top:10px}
+    .quick-chip{height:34px;padding:0 10px;border-radius:12px}
+    .helper.compact-note{display:none}
+    .next-actions{display:none}
+    .layout{display:block}
+    .stack{display:block}
+    .panel.compact{padding:14px;margin-bottom:10px}
+    .section-head{margin-bottom:10px}
+    .section-title{font-size:20px}
+    .overview-grid{grid-template-columns:repeat(3,1fr);gap:8px}
+    .overview-card{min-height:auto;padding:12px;border-radius:18px}
+    .overview-card .n{font-size:28px}
+    .ring-wrap{padding:8px 0}
+    .ring-card{padding:12px;border-radius:20px}
+    .ring-shell{width:190px;height:190px;margin:0 auto}
+    .ring-label strong{font-size:36px}
+    .ring-label span{font-size:13px}
+    .legend{margin-top:10px;gap:8px}
+    .tx-list{gap:8px}
+    .tx-card{padding:12px;border-radius:18px;grid-template-columns:auto 1fr auto;gap:10px}
+    .tx-icon{width:40px;height:40px;border-radius:14px}
+    .tx-text .name{font-size:16px}
+    .tx-amount{font-size:20px}
+    .tx-actions{grid-column:2 / span 2;justify-content:flex-start}
+    .tx-actions .mini-btn{height:32px;padding:0 10px}
+    .accordion{gap:8px}
+    .acc-item{border-radius:18px}
+    .acc-head{padding:12px}
+    .acc-body{padding:0 12px 12px}
+    .settings-grid{grid-template-columns:1fr;gap:10px}
+    .settings-card{padding:14px;border-radius:18px}
+    .tabs{padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(5,14,30,.82);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+    [data-theme="light"] .tabs{background:rgba(244,248,255,.88)}
+    .tabs-grid{gap:8px}
+    .tab{height:54px;border-radius:16px}
+    .tab span{font-size:11px}
+    .fab{left:auto;right:14px;bottom:calc(82px + env(safe-area-inset-bottom));width:58px;height:58px;border-radius:18px;font-size:30px}
+    .chipbtn,.iconbtn,.btn,.seg button,.tab,.fab,.mini-btn,.action-pill,.quick-chip,.tag-btn,.more-btn,.ghost-btn{
+      will-change:transform, box-shadow;
+    }
+    .chipbtn:hover,.iconbtn:hover,.tab:hover,.ghost-btn:hover,.tag-btn:hover,.more-btn:hover,.mini-btn:hover,.btn:hover,.quick-chip:hover,.seg button:hover{
+      transform:translateY(-1px);
+      box-shadow:0 10px 24px rgba(0,0,0,.12);
+    }
+    .chipbtn:active,.iconbtn:active,.btn:active,.seg button:active,.tab:active,.fab:active,.mini-btn:active,.action-pill:active,.quick-chip:active,.tag-btn:active,.more-btn:active,.ghost-btn:active{
+      transform:translateY(1px) scale(.97);
+      filter:saturate(1.05) brightness(.98);
+    }
+    .sheet-backdrop,.dialog{transition:opacity .2s ease, visibility .2s ease}
+    .sheet{transition:transform .26s cubic-bezier(.22,1,.36,1), opacity .2s ease}
+    .sheet-backdrop:not(.open) .sheet{transform:translateY(24px);opacity:.01}
+    .dialog-card{transition:transform .22s cubic-bezier(.22,1,.36,1), opacity .2s ease}
+    .dialog:not(.open) .dialog-card{transform:translateY(14px) scale(.98);opacity:.01}
+    .hero.hidden{display:none}
+    @media (max-width:700px){
+      .brand h1{font-size:30px}
+      .overview-grid{grid-template-columns:1fr}
+      .tabs-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+      .tab{height:50px}
+      .fab{bottom:calc(78px + env(safe-area-inset-bottom))}
+    }
+
   </style>
 </head>
 <body>
-  <div class="app minimal-app">
-    <header class="topbar minimal-topbar">
+  <div class="app">
+    <header class="topbar">
       <div class="brand">
-        <div class="brand-row">
-          <h1>هم‌بودجه</h1>
-          <span class="version">نسخه v13.0.0</span>
-        </div>
-        <p>ثبت سریع، حدس هوشمند، تصمیم‌گیری ساده</p>
+        <h1>هم‌بودجه</h1>
+        <p>ثبت فوق‌سریع، پیشنهاد هوشمند و کنترل بودجه با کمترین اصطکاک</p>
       </div>
-      <button class="iconbtn top-settings-btn" id="goSettings" aria-label="تنظیمات">⚙</button>
+      <div class="top-actions">
+        <span class="version">نسخه v14.0.0</span>
+        <button class="chipbtn tonal" id="themeToggle">🌙 تم</button>
+        <button class="chipbtn primary" id="seedDemo">نمونه ✨</button>
+      </div>
     </header>
 
-    <section class="hero hero-minimal" id="heroShell">
-      <div class="smart-entry">
-        <div class="entry-head compact">
+    <section class="hero" id="heroShell">
+      <div class="hero-grid">
+        <div class="smart-entry">
+          <div class="entry-head">
+            <div>
+              <div class="entry-title">ثبت سریع</div>
+              <div class="entry-sub">مثل «۸۵۰ نان» یا «۸۵ میلیون حقوق» بنویس</div>
+            </div>
+            <div class="seg" id="quickTypeSeg">
+              <button data-type="expense" class="active">هزینه</button>
+              <button data-type="income">درآمد</button>
+              <button data-type="transfer">انتقال</button>
+            </div>
+          </div>
+          <div class="composer">
+            <input id="smartInput" placeholder="مثلاً: 850 نان" autocomplete="off" />
+            <button class="btn primary" id="smartSave">ثبت</button>
+          </div>
+          <div class="quick-row" id="smartSuggestions"></div>
+          <div class="helper compact-note" style="margin-top:10px">
+            حدس‌ها خودکارند؛ فقط در صورت نیاز اصلاح کن.
+          </div>
+        </div>
+        <div class="next-actions">
           <div>
-            <div class="entry-title">ثبت سریع</div>
-            <div class="entry-sub">فقط مبلغ و یک کلمه بنویس</div>
+            <div class="entry-title">اقدام بعدی</div>
+            <div class="entry-sub">مهم‌ترین کارهای همین حالا</div>
           </div>
-          <div class="seg" id="quickTypeSeg">
-            <button data-type="expense" class="active">هزینه</button>
-            <button data-type="income">درآمد</button>
-            <button data-type="transfer">انتقال</button>
-          </div>
+          <div class="balance-main" id="topStats"></div>
+          <div class="next-stack" id="nextActions"></div>
         </div>
-        <div class="composer">
-          <input id="smartInput" placeholder="مثلاً: ۸۵۰ نان" autocomplete="off" />
-          <button class="btn primary" id="smartSave">ثبت</button>
-        </div>
-        <div class="quick-row" id="smartSuggestions"></div>
-        <div class="hero-mini-strip">
-          <div class="mini-stat compact"><div class="k">ورود</div><div class="v" id="topIncome"></div></div>
-          <div class="mini-stat compact"><div class="k">خروج</div><div class="v" id="topExpense"></div></div>
-          <div class="mini-stat compact"><div class="k">خالص</div><div class="v" id="topNet"></div></div>
-        </div>
-        <div class="next-pill-wrap" id="nextActions"></div>
       </div>
     </section>
 
-    <main class="layout single-column">
-      <section class="panel compact panel-shell" id="dashboardPanel"></section>
-      <section class="panel compact panel-shell hidden" id="transactionsPanel"></section>
-      <section class="panel compact panel-shell hidden" id="budgetsPanel"></section>
-      <section class="panel compact panel-shell hidden" id="fundsPanel"></section>
-      <section class="panel compact panel-shell hidden" id="reportsPanel"></section>
-      <section class="panel compact panel-shell hidden" id="settingsPanel"></section>
+    <main class="layout">
+      <div class="stack">
+        <section class="panel compact" id="dashboardPanel"></section>
+        <section class="panel compact" id="transactionsPanel"></section>
+      </div>
+      <div class="stack">
+        <section class="panel compact hidden" id="budgetsPanel"></section>
+        <section class="panel compact hidden" id="fundsPanel"></section>
+        <section class="panel compact hidden" id="reportsPanel"></section>
+        <section class="panel compact hidden" id="settingsPanel"></section>
+      </div>
     </main>
-  </div>
   </div>
 
   <button class="fab" id="fabMain" aria-label="ثبت تراکنش"><span>＋</span></button>
@@ -403,7 +444,7 @@
 
 <script>
 (() => {
-  const STORAGE = 'hambodje.v13';
+  const STORAGE = 'hambodje.v14';
   const DEFAULT_ACCOUNTS = [
     {id:uid(), name:'بانک اصلی', type:'bank', openingBalance:0},
     {id:uid(), name:'نقد', type:'cash', openingBalance:0}
@@ -442,9 +483,8 @@
   const $ = (s,p=document) => p.querySelector(s);
   const $$ = (s,p=document) => [...p.querySelectorAll(s)];
   const el = {
-    goSettings: $('#goSettings'),
-    smartInput: $('#smartInput'), smartSave: $('#smartSave'),
-    smartSuggestions: $('#smartSuggestions'), nextActions: $('#nextActions'), dashboard: $('#dashboardPanel'),
+    themeToggle: $('#themeToggle'), seedDemo: $('#seedDemo'), smartInput: $('#smartInput'), smartSave: $('#smartSave'),
+    smartSuggestions: $('#smartSuggestions'), topStats: $('#topStats'), nextActions: $('#nextActions'), dashboard: $('#dashboardPanel'),
     transactions: $('#transactionsPanel'), budgets: $('#budgetsPanel'), funds: $('#fundsPanel'), reports: $('#reportsPanel'), settings: $('#settingsPanel'),
     tabs: $('#tabs'), fab: $('#fabMain'), backdrop: $('#sheetBackdrop'), sheetBody: $('#sheetBody'), sheetTitle: $('#sheetTitle'),
     sheetSub: $('#sheetSub'), closeSheet: $('#closeSheet'), infoDialog: $('#infoDialog'), infoTitle: $('#infoTitle'), infoBody: $('#infoBody'), closeInfo: $('#closeInfo')
@@ -454,20 +494,18 @@
   render();
 
   function bind(){
-    el.goSettings?.addEventListener('click', ()=>{ state.activeTab='settings'; save(); });
+    el.seedDemo.addEventListener('click', seedDemo);
+    el.themeToggle.addEventListener('click', toggleTheme);
     el.smartSave.addEventListener('click', saveSmartInput);
     el.smartInput.addEventListener('keydown', e => { if(e.key==='Enter') saveSmartInput(); });
-    $('#quickTypeSeg')?.addEventListener('click', e=>{
-      const b = e.target.closest('button[data-type]');
-      if(!b) return;
-      state.quickType = b.dataset.type;
-      $$('#quickTypeSeg button').forEach(x=>x.classList.toggle('active', x.dataset.type===state.quickType));
+    $('#quickTypeSeg').addEventListener('click', e => {
+      const btn = e.target.closest('button[data-type]'); if(!btn) return;
+      $$('#quickTypeSeg button').forEach(b => b.classList.toggle('active', b===btn));
     });
-    el.fab.addEventListener('click', ()=>openTransactionSheet());
+    el.fab.addEventListener('click', () => openTransactionSheet());
     el.closeSheet.addEventListener('click', closeSheet);
-    el.backdrop.addEventListener('click', e=>{ if(e.target===el.backdrop) closeSheet(); });
+    el.backdrop.addEventListener('click', e => { if(e.target === el.backdrop) closeSheet(); });
     el.closeInfo.addEventListener('click', closeInfoDialog);
-    el.infoDialog.addEventListener('click', e=>{ if(e.target===el.infoDialog) closeInfoDialog(); });
   }
 
   function load(){
@@ -593,6 +631,7 @@
     if(!preserveTab && !tabs.some(([k])=>k===state.activeTab)) state.activeTab='dashboard';
     renderTabs(); renderTop(); renderDashboard(); renderTransactions(); renderBudgets(); renderFunds(); renderReports(); renderSettings(); renderSuggestions();
     updatePanelVisibility();
+    el.themeToggle.textContent = state.theme==='dark' ? '☀️ روشن' : '🌙 تیره';
   }
 
   function renderTabs(){
@@ -601,41 +640,44 @@
   }
   function updatePanelVisibility(){
     const active = state.activeTab;
-    const map = {dashboard:el.dashboard, transactions:el.transactions, budgets:el.budgets, funds:el.funds, reports:el.reports, settings:el.settings};
-    Object.entries(map).forEach(([key,node])=>{
-      const isActive = active===key;
-      node.classList.toggle('hidden', !isActive);
-      node.classList.remove('view-enter');
-      if(isActive){ requestAnimationFrame(()=>node.classList.add('view-enter')); }
-    });
-    $('#heroShell')?.classList.toggle('hidden', !['dashboard','transactions'].includes(active));
+    el.dashboard.classList.toggle('hidden', active!=='dashboard');
+    el.transactions.classList.toggle('hidden', active!=='transactions');
+    el.budgets.classList.toggle('hidden', active!=='budgets');
+    el.funds.classList.toggle('hidden', active!=='funds');
+    el.reports.classList.toggle('hidden', active!=='reports');
+    el.settings.classList.toggle('hidden', active!=='settings');
+    const hero = document.getElementById('heroShell');
+    if(hero) hero.classList.toggle('hidden', !['dashboard','transactions'].includes(active));
+    el.tabs.parentElement.querySelector('.tabs-grid').style.gridTemplateColumns = `repeat(${tabs.length},1fr)`;
   }
   function renderTop(){
     const month = monthNow();
     const income = monthIncome(month), expense = monthExpense(month), net = income-expense;
-    $('#topIncome').textContent = fmt(income);
-    $('#topExpense').textContent = fmt(expense);
-    $('#topNet').textContent = fmt(net);
+    const cards = [
+      ['ورود ماه', income, 'income'],
+      ['خروج ماه', expense, 'expense'],
+      ['خالص', net, 'net']
+    ];
+    el.topStats.innerHTML = cards.map(([t,v,c])=>`<div class="mini-stat"><div class="k">${t}</div><div class="v ${Math.abs(v)>99999999?'small':''}" style="color:${c==='income'?'var(--income)':c==='expense'?'#ffd2da':'var(--primary)'}">${fmt(v)}</div></div>`).join('');
     const dueInst = state.installments.filter(i=>i.active!==false).sort((a,b)=>(a.dueDate||'').localeCompare(b.dueDate||'')).slice(0,1);
     const actions = [];
-    if(dueInst[0]) actions.push({title:'قسط نزدیک سررسید', sub:`${dueInst[0].title} • ${dueInst[0].dueDate}`, btn:'ثبت', act:()=>openInstallmentQuick(dueInst[0])});
+    if(dueInst[0]) actions.push({title:'قسط نزدیک سررسید', sub:`${dueInst[0].title} • ${dueInst[0].dueDate} • ${fmt(dueInst[0].monthlyAmount)} تومان`, btn:'ثبت', act:()=>openInstallmentQuick(dueInst[0])});
     const budget = budgetUsage();
-    if(budget.totalPlan && budget.percent >= 85) actions.push({title:'هشدار بودجه', sub:`مصرف کل به ${budget.percent}٪ رسیده است`, btn:'بودجه', act:()=>{state.activeTab='budgets'; save();}});
+    if(budget.totalPlan && budget.percent >= 85) actions.push({title:'بودجه در آستانه سقف', sub:`مصرف بودجه به ${budget.percent}٪ رسیده است.`, btn:'بودجه', act:()=>{state.activeTab='budgets'; save();}});
     const template = frequentTemplates()[0];
-    if(template) actions.push({title:'ثبت پرتکرار', sub:`${template.note} • ${fmt(template.amount)}`, btn:'انجام', act:()=>quickTemplate(template)});
-    if(!actions.length) actions.push({title:'شروع سریع', sub:'اولین تراکنش را ثبت کن تا پیشنهادها دقیق‌تر شوند', btn:'ثبت', act:()=>openTransactionSheet()});
-    const first = actions[0];
-    el.nextActions.innerHTML = `<button class="action-inline" id="nextActionBtn"><div class="copy"><strong>${first.title}</strong><span>${first.sub}</span></div><span class="tag-btn">${first.btn}</span></button>`;
-    $('#nextActionBtn')?.addEventListener('click', first.act);
+    if(template) actions.push({title:'ثبت یک‌لمسی پرتکرار', sub:`${template.note} • ${fmt(template.amount)} تومان`, btn:'انجام', act:()=>quickTemplate(template)});
+    if(!actions.length) actions.push({title:'شروع کن', sub:'اولین تراکنش را ثبت کن تا اپ الگوی تو را یاد بگیرد.', btn:'ثبت', act:()=>openTransactionSheet()});
+    el.nextActions.innerHTML = actions.slice(0,1).map((a,i)=>`<div class="next-card" data-action="${i}"><div class="h"><strong>${a.title}</strong><button class="tag-btn">${a.btn}</button></div><div class="sub">${a.sub}</div></div>`).join('');
+    $$('.next-card', el.nextActions).forEach((node,i)=> node.addEventListener('click', actions[i].act));
   }
   function renderSuggestions(){
     const templates = frequentTemplates();
     const quick = [
-      ...templates.map((t)=>({label:t.note, sub:fmt(t.amount), fn:()=>quickTemplate(t)})),
-      state.installments[0] ? {label:'قسط', sub:'ثبت فوری', fn:()=>openInstallmentQuick(state.installments[0])} : null,
-      state.funds[0] ? {label:'صندوق', sub:'واریز', fn:()=>openFundQuick(state.funds[0])} : null
-    ].filter(Boolean).slice(0,3);
-    el.smartSuggestions.innerHTML = quick.length ? quick.map((q,i)=>`<button class="quick-chip" data-i="${i}">${q.label} <small>${q.sub}</small></button>`).join('') : `<span class="small">پس از چند ثبت، میانبرهای هوشمند اینجا ظاهر می‌شوند.</span>`;
+      ...templates.map((t,i)=>({label:t.note, sub:fmt(t.amount), fn:()=>quickTemplate(t)})),
+      {label:'قسط', sub:'ثبت فوری', fn:()=>openInstallmentQuick(state.installments[0])},
+      {label:'صندوق', sub:'واریز', fn:()=>openFundQuick(state.funds[0])}
+    ].filter(x=>x.fn).slice(0,4);
+    el.smartSuggestions.innerHTML = quick.length ? quick.map((q,i)=>`<button class="quick-chip" data-i="${i}">${q.label} <small>${q.sub}</small></button>`).join('') : `<span class="small">بعد از چند ثبت، میانبرهای هوشمند اینجا ظاهر می‌شوند.</span>`;
     $$('.quick-chip', el.smartSuggestions).forEach((b,i)=> b.addEventListener('click', quick[i].fn));
   }
 
@@ -643,33 +685,42 @@
     const month = monthNow();
     const income = monthIncome(month), expense = monthExpense(month), net = income-expense;
     const usage = budgetUsage(month);
-    const breakdown = expenseByCategory(month).slice(0,4);
+    const breakdown = expenseByCategory(month).slice(0,5);
+    const monthTitle = month.replace('/','/ماه ');
     el.dashboard.innerHTML = `
-      <div class="panel-header compact">
-        <div class="hgroup"><button class="info" data-help="dashboard">i</button><div class="section-title minimal">خلاصه ماه</div></div>
+      <div class="panel-header">
+        <div>
+          <div class="hgroup"><button class="info" data-help="dashboard">i</button><div class="section-title">نمای کلی ${month}</div></div>
+          <div class="section-sub">سه شاخص اصلی این ماه</div>
+        </div>
         <button class="ghost-btn" id="dashQuickAdd">ثبت جدید</button>
       </div>
-      <div class="overview-grid minimal">
-        <div class="overview-card minimal income"><div class="t">ورود</div><div class="n">${fmt(income)}</div></div>
-        <div class="overview-card minimal expense"><div class="t">خروج</div><div class="n">${fmt(expense)}</div></div>
-        <div class="overview-card minimal net"><div class="t">خالص</div><div class="n">${fmt(net)}</div></div>
+      <div class="overview-grid">
+        <div class="overview-card income"><div class="t">درآمد ماه</div><div class="n">${fmt(income)}</div></div>
+        <div class="overview-card expense"><div class="t">هزینه ماه</div><div class="n">${fmt(expense)}</div></div>
+        <div class="overview-card net"><div class="t">خالص</div><div class="n">${fmt(net)}</div></div>
       </div>
       <div class="divider"></div>
-      <div class="budget-wrap minimal">
+      <div class="budget-wrap">
         <div class="ring-wrap">
-          <canvas id="budgetRing" width="220" height="220"></canvas>
-          <div class="ring-label"><strong>${usage.percent}</strong><span>درصد مصرف</span></div>
+          <canvas id="budgetRing" width="240" height="240"></canvas>
+          <div class="ring-label"><strong>${usage.percent}</strong><span>درصد</span></div>
         </div>
         <div>
-          <div class="hgroup" style="margin-bottom:6px"><button class="info" data-help="budgetRing">i</button><div class="section-title minimal">مصرف بودجه</div></div>
-          <div class="legend compact">
-            ${breakdown.length ? breakdown.map((x,i)=>`<div class="legend-row"><span class="dot" style="background:${COLORS[i%COLORS.length]}"></span><div><div class="name minimal">${x.category}</div><div class="meta">${fmt(x.amount)} تومان</div></div><div class="meta">${x.percent}%</div></div>`).join('') : `<div class="empty">هنوز هزینه‌ای برای این ماه ثبت نشده است.</div>`}
+          <div class="hgroup" style="margin-bottom:8px"><button class="info" data-help="budgetRing">i</button><div>
+            <div class="section-title">مصرف بودجه</div>
+            <div class="section-sub">نرخ مصرف کل بودجه و سهم دسته‌ها</div>
+          </div></div>
+          <div class="legend">
+            <div class="legend-row"><span class="dot" style="background:var(--primary)"></span><div><div class="name">بودجه کل</div><div class="meta">${fmt(usage.totalPlan)} تومان</div></div><div class="name">${fmt(usage.totalPlan)}</div></div>
+            <div class="legend-row"><span class="dot" style="background:#38bdf8"></span><div><div class="name">هزینه ثبت‌شده</div><div class="meta">${fmt(usage.spent)} تومان</div></div><div class="name">${usage.percent}٪</div></div>
+            ${breakdown.map((b,i)=>`<div class="legend-row"><span class="dot" style="background:${COLORS[i%COLORS.length]}"></span><div><div class="name">${b.name}</div><div class="meta">${fmt(b.value)} تومان</div></div><div class="name">${usage.spent?Math.round(b.value/usage.spent*100):0}٪</div></div>`).join('') || `<div class="empty">هزینه‌ای برای ترسیم نمودار ثبت نشده است.</div>`}
           </div>
         </div>
       </div>`;
-    drawBudgetRing(usage.percent, breakdown);
     $('#dashQuickAdd')?.addEventListener('click', ()=>openTransactionSheet());
-    bindInfoButtons();
+    $$('[data-help]', el.dashboard).forEach(b=> b.addEventListener('click', ()=>showHelp(b.dataset.help)));
+    drawRing($('#budgetRing'), usage, breakdown);
   }
 
   function renderTransactions(){
@@ -678,8 +729,8 @@
     el.transactions.innerHTML = `
       <div class="panel-header">
         <div>
-          <div class="hgroup"><button class="info" data-help="transactions">i</button><div class="section-title minimal">آخرین تراکنش‌ها</div></div>
-          
+          <div class="hgroup"><button class="info" data-help="transactions">i</button><div class="section-title">آخرین تراکنش‌ها</div></div>
+          <div class="section-sub">دو ثبت آخر</div>
         </div>
         <div class="right">
           ${rows.length>2 ? `<button class="more-btn" id="toggleMoreTx">${state.ui.showAllTx?'بستن':'بیشتر'}</button>`:''}
@@ -690,7 +741,7 @@
         ${showRows.length ? showRows.map(t=>{
           const icon = t.type==='income'?'↘':'↗';
           const acc = findAccount(t.accountId)?.name || 'حساب';
-          return `<div class="tx-item minimal"><div class="tx-main"><div class="tx-icon minimal">${icon}</div><div class="tx-text"><div class="name minimal">${t.note || t.category}</div><div class="tx-meta"><span>${t.date}</span><span>${t.category}</span><span>${acc}</span></div></div></div><div class="tx-side"><div class="tx-amount minimal ${t.type==='income'?'income':'expense'}">${t.type==='income'?'+':'-'}${fmt(t.amount)}</div><div class="tx-actions"><button class="mini-btn edit" data-edit-tx="${t.id}">ویرایش</button><button class="mini-btn delete" data-del-tx="${t.id}">حذف</button></div></div></div>`;
+          return `<div class="tx-item"><div class="tx-main"><div class="tx-icon">${icon}</div><div class="tx-text"><div class="name">${t.note || t.category}</div><div class="tx-meta"><span>${t.date}</span><span>${t.category}</span><span>${acc}</span></div></div></div><div class="tx-side"><div class="tx-amount ${t.type==='income'?'income':'expense'}">${t.type==='income'?'+':'-'}${fmt(t.amount)}</div><div class="tx-actions"><button class="mini-btn edit" data-edit-tx="${t.id}">ویرایش</button><button class="mini-btn delete" data-del-tx="${t.id}">حذف</button></div></div></div>`;
         }).join('') : `<div class="empty">هنوز تراکنشی ثبت نشده است.</div>`}
       </div>`;
     $('#toggleMoreTx')?.addEventListener('click', ()=>{ state.ui.showAllTx = !state.ui.showAllTx; save(); });
@@ -788,7 +839,7 @@
       </div>
       <div class="divider"></div>
       <div class="section-title">پرتکرارترین ثبت‌ها</div>
-      <div class="tx-list" style="margin-top:10px">${freq.length ? freq.slice(0,4).map(t=>`<div class="tx-item minimal"><div class="tx-main"><div class="tx-icon minimal">•</div><div class="tx-text"><div class="name minimal">${t.note}</div><div class="tx-meta"><span>${t.category}</span><span>${t.type==='income'?'درآمد':'هزینه'}</span><span>${t.count} بار</span></div></div></div><div class="tx-side"><div class="tx-amount minimal ${t.type==='income'?'income':'expense'}">${fmt(t.amount)}</div><div class="tx-actions"><button class="mini-btn edit" data-run-template="${encodeURIComponent(JSON.stringify(t))}">ثبت سریع</button></div></div></div>`).join('') : `<div class="empty">برای گزارش هوشمند، چند تراکنش ثبت کن.</div>`}</div>`;
+      <div class="tx-list" style="margin-top:10px">${freq.length ? freq.slice(0,4).map(t=>`<div class="tx-item"><div class="tx-main"><div class="tx-icon">•</div><div class="tx-text"><div class="name">${t.note}</div><div class="tx-meta"><span>${t.category}</span><span>${t.type==='income'?'درآمد':'هزینه'}</span><span>${t.count} بار</span></div></div></div><div class="tx-side"><div class="tx-amount ${t.type==='income'?'income':'expense'}">${fmt(t.amount)}</div><div class="tx-actions"><button class="mini-btn edit" data-run-template="${encodeURIComponent(JSON.stringify(t))}">ثبت سریع</button></div></div></div>`).join('') : `<div class="empty">برای گزارش هوشمند، چند تراکنش ثبت کن.</div>`}</div>`;
     $$('[data-run-template]', el.reports).forEach(b=> b.addEventListener('click', ()=> quickTemplate(JSON.parse(decodeURIComponent(b.dataset.runTemplate)))));
     $$('[data-help]', el.reports).forEach(b=> b.addEventListener('click', ()=>showHelp(b.dataset.help)));
   }
